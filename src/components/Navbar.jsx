@@ -5,7 +5,7 @@ const Navbar = () => {
     const [toggle, setToggle] = useState(false)
   return (
     <>
-        <div className="w-full font-sans bg-beige text-gray-900">
+        <div className="w-full fixed font-sans bg-beige text-gray-900">
             {/* Header */}
             <header className="bg-maroon px-3 py-5 shadow-lg">
                 <div className="flex justify-between mx-6 items-center">
