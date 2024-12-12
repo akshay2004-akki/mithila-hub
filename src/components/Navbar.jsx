@@ -13,8 +13,12 @@ const Navbar = () => {
         {/* Header */}
         <header className="bg-white py-3 shadow-lg">
           <div className="flex justify-between mx-6 items-center">
-            <div className="text-2xl font-serif text-black font-thin">
+            <div className="text-2xl font-serif text-black font-thin flex">
               <img src={logo} className="h-[60px] w-[60px] rounded-full" />
+              <div className="ml-3 text-sm flex flex-col justify-center">
+                <span>Mamta Das</span>
+                <span className="text-[27px] font-extrabold">Mithila</span>
+              </div>
             </div>
             <nav>
               <ul className="hidden space-x-8 text-[18px] sm:flex">
@@ -133,35 +137,55 @@ const Navbar = () => {
                 <Link
                   to="/sarees"
                   className="py-3 text-slate-300 hover:text-white"
-                  onClick={()=>{setToggle(false); setToggle2(false); setToggle3(false)}}
+                  onClick={() => {
+                    setToggle(false);
+                    setToggle2(false);
+                    setToggle3(false);
+                  }}
                 >
                   Saree
                 </Link>
                 <Link
                   to="/chunri"
                   className="py-3 text-slate-300 hover:text-white"
-                  onClick={()=>{setToggle(false); setToggle2(false); setToggle3(false)}}
+                  onClick={() => {
+                    setToggle(false);
+                    setToggle2(false);
+                    setToggle3(false);
+                  }}
                 >
                   Chunari
                 </Link>
                 <Link
                   to="/bedsheet"
                   className="py-3 text-slate-300 hover:text-white"
-                  onClick={()=>{setToggle(false); setToggle2(false); setToggle3(false)}}
+                  onClick={() => {
+                    setToggle(false);
+                    setToggle2(false);
+                    setToggle3(false);
+                  }}
                 >
                   Bed Sheet
                 </Link>
                 <Link
                   to="/canvas"
                   className="py-3 text-slate-300 hover:text-white"
-                  onClick={()=>{setToggle(false); setToggle2(false); setToggle3(false)}}
+                  onClick={() => {
+                    setToggle(false);
+                    setToggle2(false);
+                    setToggle3(false);
+                  }}
                 >
                   Canvas
                 </Link>
                 <Link
                   to="/custom"
                   className="py-3 text-[15px] text-slate-300 hover:text-white"
-                  onClick={()=>{setToggle(false); setToggle2(false); setToggle3(false)}}
+                  onClick={() => {
+                    setToggle(false);
+                    setToggle2(false);
+                    setToggle3(false);
+                  }}
                 >
                   Customization
                 </Link>

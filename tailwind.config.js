@@ -8,6 +8,9 @@ export default {
         maroon: "#a74b41",
         gold: "#d4af37",
       },
+      fontFamily:{
+        poppins : ['Poppins', 'sans-serif']
+      },
       animation: {
         float: "float 4s ease-in-out infinite",
       },
