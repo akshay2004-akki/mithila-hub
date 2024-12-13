@@ -9,7 +9,7 @@ const Navbar = () => {
 
   return (
     <>
-      <div className="w-full fixed z-10 font-sans bg-beige text-gray-900">
+      <div className="w-full fixed z-[9999] font-sans bg-beige text-gray-900">
         {/* Header */}
         <header className="bg-white py-3 shadow-lg">
           <div className="flex justify-between mx-6 items-center">
@@ -23,28 +23,33 @@ const Navbar = () => {
             <nav>
               <ul className="hidden space-x-8 text-[18px] sm:flex">
                 <li>
-                  <Link to="/" className="text-black hover:text-gold">
+                  <Link to="/" className="text-black 
+                  transition-colors duration-300  hover:text-gold">
                     Home
                   </Link>
                 </li>
                 <li>
-                  <Link to="/gallery" className="text-black hover:text-gold">
+                  <Link to="/gallery" className="text-black 
+                  transition-colors duration-300  hover:text-gold">
                     Gallery
                   </Link>
                 </li>
                 <li>
-                  <Link to="/about" className="text-black hover:text-gold">
+                  <Link to="/about" className="text-black 
+                  transition-colors duration-300  hover:text-gold">
                     About Us
                   </Link>
                 </li>
-                <li className="text-black hover:text-gold">
+                <li className="text-black
+                transition-colors duration-300  hover:text-gold">
                   <button onClick={() => setToggle3((prev) => !prev)}>
                     Categories
                   </button>
                 </li>
                 <li>
                   {" "}
-                  <Link to="/contact" className="text-black hover:text-gold">
+                  <Link to="/contact" className="text-black
+                  transition-colors duration-300  hover:text-gold">
                     Contact Us
                   </Link>
                 </li>
@@ -92,13 +97,13 @@ const Navbar = () => {
 
               <div className="block sm:hidden">
                 <button
-                  onClick={() => setToggle((prev) => !prev)}
-                  className="font-bold text-black text-2xl transition"
+                  onClick={() => setToggle((prev) =>!prev)}
+                  className="font-bold text-black text-2xl transition-all duration-300"
                 >
                   <i
-                    className={`${
-                      toggle ? "fa-solid fa-x" : "fa-solid fa-bars"
-                    }`}
+                    className={`fa-solid ${
+                      toggle ? "fa-x rotate-180" : "fa-bars rotate-0"
+                    } transition-transform duration-300`}
                   ></i>
                 </button>
               </div>
@@ -107,22 +112,25 @@ const Navbar = () => {
                   toggle ? "block " : "hidden"
                 }`}
               >
-                <Link to="/" className="text-white hover:text-gold p-2">
+                <Link to="/" className="text-white transition-colors duration-300  hover:text-gold p-2">
                   Home
                 </Link>
-                <Link to="/gallery" className="text-white hover:text-gold p-2">
+                <Link to="/gallery" className="text-white transition-colors duration-300 hover:text-gold p-2">
                   Gallery
                 </Link>
-                <Link to="/about" className="text-white hover:text-gold p-2">
+                <Link to="/about" className="text-white 
+                transition-colors duration-300  hover:text-gold p-2">
                   About Us
                 </Link>
                 <button
-                  className="text-white hover:text-gold peer p-2"
+                  className="text-white
+                  transition-colors duration-300  hover:text-gold peer p-2"
                   onClick={() => setToggle2((prev) => !prev)}
                 >
                   Categories
                 </button>
-                <Link to="/contact" className="text-white hover:text-gold p-2">
+                <Link to="/contact" className="text-white 
+                transition-colors duration-300  hover:text-gold p-2">
                   Contact Us
                 </Link>
               </div>

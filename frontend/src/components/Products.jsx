@@ -58,9 +58,11 @@ const Products = () => {
 
         {/* Saree Section */}
         <div className="mb-12">
-          <h2 className="text-3xl font-semibold font-poppins flex justify-between text-center mb-8">
-            <span className="sm:text-3xl text-xl">Saree</span>
-            <span className="sm:text-xl text-sm underline">
+          <h2 className="flex items-center justify-between text-center mb-8 text-2xl sm:text-3xl font-semibold font-poppins">
+            <span className="text-xl sm:text-3xl text-gray-800 tracking-wide">
+              Saree
+            </span>
+            <span className="text-sm sm:text-lg text-blue-500 underline decoration-2 hover:text-blue-600 transition-colors">
               <Link to="/sarees">View All</Link>
             </span>
           </h2>
@@ -86,17 +88,91 @@ const Products = () => {
             ))}
           </div>
         </div>
-
+            <hr className="h-1 bg-black" />
+            <br />
         {/* Bed Sheet Section */}
-        <div>
-          <h2 className="text-3xl font-semibold font-poppins flex justify-between text-center mb-8">
-            <span className="sm:text-3xl text-xl">Bed Sheet</span>
-            <span className="text-xl">
-              <Link to="/bedsheet" className="sm:text-xl text-sm underline">View All</Link>
+        <div className="mb-12">
+        <h2 className="flex items-center justify-between text-center mb-8 text-2xl sm:text-3xl font-semibold font-poppins">
+            <span className="text-xl sm:text-3xl text-gray-800 tracking-wide">
+              Bed Sheet
+            </span>
+            <span className="text-sm sm:text-lg text-blue-500 underline decoration-2 hover:text-blue-600 transition-colors">
+              <Link to="/bedsheet">View All</Link>
             </span>
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 items-center">
             {bedsheet.map((product) => (
+              <div
+                key={product.id}
+                className="bg-white shadow-lg rounded-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300"
+              >
+                <img
+                  src={product.img}
+                  alt={product.name}
+                  className="w-full h-48 object-contain"
+                />
+                <div className="p-4 text-center">
+                  <h3 className="text-lg font-semibold">{product.name}</h3>
+                  <p className="text-gray-600 mt-2">{product.price}</p>
+                  <button className="mt-4 w-full py-2 px-4 bg-blue-500 text-white font-medium rounded-md hover:bg-blue-600 transition-colors">
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <hr className="h-1 bg-black" />
+            <br />
+
+        {/* Canvas section */}
+        <div className="mb-12">
+        <h2 className="flex items-center justify-between text-center mb-8 text-2xl sm:text-3xl font-semibold font-poppins">
+            <span className="text-xl sm:text-3xl text-gray-800 tracking-wide">
+              Canvas
+            </span>
+            <span className="text-sm sm:text-lg text-blue-500 underline decoration-2 hover:text-blue-600 transition-colors">
+              <Link to="/canvas">View All</Link>
+            </span>
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 items-center">
+            {saree.map((product) => (
+              <div
+                key={product.id}
+                className="bg-white shadow-lg rounded-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300"
+              >
+                <img
+                  src={product.img}
+                  alt={product.name}
+                  className="w-full h-48 object-contain"
+                />
+                <div className="p-4 text-center">
+                  <h3 className="text-lg font-semibold">{product.name}</h3>
+                  <p className="text-gray-600 mt-2">{product.price}</p>
+                  <button className="mt-4 w-full py-2 px-4 bg-blue-500 text-white font-medium rounded-md hover:bg-blue-600 transition-colors">
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <hr className="h-1 bg-black" />
+            <br />
+
+        <div>
+        <h2 className="flex items-center justify-between text-center mb-8 text-2xl sm:text-3xl font-semibold font-poppins">
+            <span className="text-xl sm:text-3xl text-gray-800 tracking-wide">
+              Chunri (Chunni)
+            </span>
+            <span className="text-sm sm:text-lg text-blue-500 underline decoration-2 hover:text-blue-600 transition-colors">
+              <Link to="/canvas">View All</Link>
+            </span>
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 items-center">
+            {saree.map((product) => (
               <div
                 key={product.id}
                 className="bg-white shadow-lg rounded-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300"
