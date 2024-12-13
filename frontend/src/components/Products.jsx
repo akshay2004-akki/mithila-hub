@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from "react";
 import { Link } from "react-router-dom";
 
@@ -58,8 +59,8 @@ const Products = () => {
         {/* Saree Section */}
         <div className="mb-12">
           <h2 className="text-3xl font-semibold font-poppins flex justify-between text-center mb-8">
-            <span>Saree</span>
-            <span className="text-xl">
+            <span className="sm:text-3xl text-xl">Saree</span>
+            <span className="sm:text-xl text-sm underline">
               <Link to="/sarees">View All</Link>
             </span>
           </h2>
@@ -89,9 +90,9 @@ const Products = () => {
         {/* Bed Sheet Section */}
         <div>
           <h2 className="text-3xl font-semibold font-poppins flex justify-between text-center mb-8">
-            <span>Bed Sheet</span>
+            <span className="sm:text-3xl text-xl">Bed Sheet</span>
             <span className="text-xl">
-              <Link to="/bedsheet">View All</Link>
+              <Link to="/bedsheet" className="sm:text-xl text-sm underline">View All</Link>
             </span>
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 items-center">
