@@ -70,7 +70,7 @@ const Products = () => {
             {saree.map((product) => (
               <div
                 key={product.id}
-                className="bg-white shadow-lg rounded-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300"
+                className="bg-white shadow-lg rounded-lg overflow-hidden hover:shadow-2xl transition-all md:hover:scale-[1.06] duration-300"
               >
                 <img
                   src={product.img}
@@ -79,8 +79,8 @@ const Products = () => {
                 />
                 <div className="p-4 text-center">
                   <h3 className="text-lg font-semibold">{product.name}</h3>
-                  <p className="text-gray-600 mt-2">{product.price}</p>
-                  <button className="mt-4 w-full py-2 px-4 bg-blue-500 text-white font-medium rounded-md hover:bg-blue-600 transition-colors">
+                  <p className="text-gray-600 mt-2">Price : {product.price}</p>
+                  <button className="mt-4 w-full py-2 px-4 bg-maroon text-white font-medium rounded-md hover:bg-green-600 transition-colors">
                     Add to Cart
                   </button>
                 </div>
@@ -104,7 +104,7 @@ const Products = () => {
             {bedsheet.map((product) => (
               <div
                 key={product.id}
-                className="bg-white shadow-lg rounded-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300"
+                className="bg-white shadow-lg rounded-lg overflow-hidden transition-all md:hover:scale-[1.06] hover:shadow-2xl  duration-300"
               >
                 <img
                   src={product.img}
@@ -113,8 +113,8 @@ const Products = () => {
                 />
                 <div className="p-4 text-center">
                   <h3 className="text-lg font-semibold">{product.name}</h3>
-                  <p className="text-gray-600 mt-2">{product.price}</p>
-                  <button className="mt-4 w-full py-2 px-4 bg-blue-500 text-white font-medium rounded-md hover:bg-blue-600 transition-colors">
+                  <p className="text-gray-600 mt-2">Price : {product.price}</p>
+                  <button className="mt-4 w-full py-2 px-4 bg-maroon text-white font-medium rounded-md hover:bg-green-600 transition-colors">
                     Add to Cart
                   </button>
                 </div>
@@ -140,7 +140,7 @@ const Products = () => {
             {saree.map((product) => (
               <div
                 key={product.id}
-                className="bg-white shadow-lg rounded-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300"
+                className="bg-white shadow-lg rounded-lg overflow-hidden hover:shadow-2xl transition-all md:hover:scale-[1.06] duration-300"
               >
                 <img
                   src={product.img}
@@ -149,8 +149,8 @@ const Products = () => {
                 />
                 <div className="p-4 text-center">
                   <h3 className="text-lg font-semibold">{product.name}</h3>
-                  <p className="text-gray-600 mt-2">{product.price}</p>
-                  <button className="mt-4 w-full py-2 px-4 bg-blue-500 text-white font-medium rounded-md hover:bg-blue-600 transition-colors">
+                  <p className="text-gray-600 mt-2">Price : {product.price}</p>
+                  <button className="mt-4 w-full py-2 px-4 bg-maroon text-white font-medium rounded-md hover:bg-green-600 transition-colors">
                     Add to Cart
                   </button>
                 </div>
@@ -175,7 +175,7 @@ const Products = () => {
             {saree.map((product) => (
               <div
                 key={product.id}
-                className="bg-white shadow-lg rounded-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300"
+                className="bg-white shadow-lg rounded-lg overflow-hidden hover:shadow-2xl transition-all md:hover:scale-[1.06] duration-300"
               >
                 <img
                   src={product.img}
@@ -184,8 +184,8 @@ const Products = () => {
                 />
                 <div className="p-4 text-center">
                   <h3 className="text-lg font-semibold">{product.name}</h3>
-                  <p className="text-gray-600 mt-2">{product.price}</p>
-                  <button className="mt-4 w-full py-2 px-4 bg-blue-500 text-white font-medium rounded-md hover:bg-blue-600 transition-colors">
+                  <p className="text-gray-600 mt-2">Price : {product.price}</p>
+                  <button className="mt-4 w-full py-2 px-4 bg-maroon text-white font-medium rounded-md hover:bg-green-600 transition-colors">
                     Add to Cart
                   </button>
                 </div>

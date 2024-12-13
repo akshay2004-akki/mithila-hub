@@ -60,7 +60,7 @@ const Navbar = () => {
                   toggle3 ? "block" : "hidden"
                 }`}
               >
-                <button onClick={() => setToggle3((prev) => !prev)}>
+                <button onClick={() => {setToggle3((prev) => !prev)}}>
                   <i className="fa-solid fa-x absolute right-2 text-white"></i>
                 </button>
                 <Link
@@ -97,7 +97,7 @@ const Navbar = () => {
 
               <div className="block sm:hidden">
                 <button
-                  onClick={() => setToggle((prev) =>!prev)}
+                  onClick={() => {setToggle((prev) =>!prev); setToggle2(false)}}
                   className="font-bold text-black text-2xl transition-all duration-300"
                 >
                   <i
