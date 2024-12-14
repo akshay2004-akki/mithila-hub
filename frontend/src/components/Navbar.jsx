@@ -7,6 +7,12 @@ const Navbar = () => {
   const [toggle2, setToggle2] = useState(false);
   const [toggle3, setToggle3] = useState(false);
 
+  window.onscroll = ()=>{
+    setToggle(false)
+    setToggle2(false)
+    setToggle3(false)
+  }
+
   return (
     <>
       <div className="w-full fixed z-[9999] font-sans bg-beige text-gray-900">
@@ -16,32 +22,35 @@ const Navbar = () => {
             <div className="text-2xl font-serif text-black font-thin flex">
               <img src={logo} className="h-[60px] w-[60px] rounded-full" />
               <div className="ml-3 text-sm flex flex-col justify-center">
-                <span>Mamta Das</span>
-                <span className="text-[27px] font-extrabold">Mithila</span>
+                <span className="font-poppins font-semibold text-xl">Mamta Das</span>
+                <span className="text-[28px] font-bold font-poppins">Mithila</span>
               </div>
             </div>
             <nav>
-              <ul className="hidden space-x-8 text-[18px] sm:flex">
+              <ul className="hidden text-[18px] sm:flex sm:gap-8 ">
                 <li>
                   <Link to="/" className="text-black 
-                  transition-colors duration-300  hover:text-gold">
+                  transition-colors duration-300 before:absolute md:before:content-[''] md:before:h-[1px] md:before:w-[0px] md:before:bottom-1/4 md:before:bg-black hover:before:w-[50px] before:transition-all before:duration-300  hover:text-gold">
                     Home
                   </Link>
                 </li>
                 <li>
                   <Link to="/gallery" className="text-black 
-                  transition-colors duration-300  hover:text-gold">
+                  transition-colors duration-300 
+                  before:absolute md:before:content-[''] md:before:h-[1px] md:before:w-[0px] md:before:bottom-1/4 md:before:bg-black hover:before:w-[55px] before:transition-all before:duration-300  hover:text-gold">
                     Gallery
                   </Link>
                 </li>
                 <li>
                   <Link to="/about" className="text-black 
-                  transition-colors duration-300  hover:text-gold">
+                  transition-colors duration-300
+                  before:absolute md:before:content-[''] md:before:h-[1px] md:before:w-[0px] md:before:bottom-1/4 md:before:bg-black hover:before:w-[75px] before:transition-all before:duration-300   hover:text-gold">
                     About Us
                   </Link>
                 </li>
                 <li className="text-black
-                transition-colors duration-300  hover:text-gold">
+                transition-colors duration-300
+                before:absolute md:before:content-[''] md:before:h-[1px] md:before:w-[0px] md:before:bottom-1/4 md:before:bg-black hover:before:w-[86px] before:transition-all before:duration-300   hover:text-gold">
                   <button onClick={() => setToggle3((prev) => !prev)}>
                     Categories
                   </button>
@@ -49,7 +58,8 @@ const Navbar = () => {
                 <li>
                   {" "}
                   <Link to="/contact" className="text-black
-                  transition-colors duration-300  hover:text-gold">
+                  transition-colors duration-300
+                  before:absolute md:before:content-[''] md:before:h-[1px] md:before:w-[0px] md:before:bottom-1/4 md:before:bg-black hover:before:w-[90px] before:transition-all before:duration-300   hover:text-gold">
                     Contact Us
                   </Link>
                 </li>
