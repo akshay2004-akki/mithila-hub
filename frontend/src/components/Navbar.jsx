@@ -15,15 +15,15 @@ const Navbar = () => {
 
   return (
     <>
-      <div className="w-full fixed z-[9999] font-sans bg-beige text-gray-900">
+      <div className="w-full font-poppins fixed z-[9999] bg-beige text-gray-900">
         {/* Header */}
         <header className="bg-white py-3 shadow-lg">
           <div className="flex justify-between mx-6 items-center">
             <div className="text-2xl font-serif text-black font-thin flex">
               <img src={logo} className="h-[60px] w-[60px] rounded-full" />
               <div className="ml-3 text-sm flex flex-col justify-center">
-                <span className="font-poppins font-semibold text-xl">Mamta Das</span>
-                <span className="text-[28px] font-bold font-poppins">Mithila World</span>
+                <span className="font-poppins font-medium text-xl">Mamta Das |</span>
+                <span className="text-[22px] font-bold font-poppins">Mithila World</span>
               </div>
             </div>
             <nav>
