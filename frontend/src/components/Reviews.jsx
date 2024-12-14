@@ -1,3 +1,4 @@
+import Tilt from 'react-parallax-tilt'
 function Reviews() {
   const reviews = [
     {
@@ -69,8 +70,12 @@ function Reviews() {
               Customer Reviews
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                
               {reviews.map((review) => (
-                <div
+                <Tilt
+                    tiltMaxAngleX={20}
+                    tiltMaxAngleY={20}
+                    scale={1.1}
                   key={review.id}
                   className="review-card bg-white p-6 shadow-md rounded-lg hover:shadow-lg transition-shadow duration-300"
                 >
@@ -80,7 +85,7 @@ function Reviews() {
                   <p className="text-sm text-gray-500">{review.location}</p>
                   <p className="text-gray-700 mt-2">{review.review}</p>
                   <span className="block mt-4 text-yellow-500 font-semibold">{`⭐ ${review.rating} / 5`}</span>
-                </div>
+                </Tilt>
               ))}
             </div>
           </div>
