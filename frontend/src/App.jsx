@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import {BrowserRouter as Router, Route, Routes} from "react-router-dom"
 import Navbar from "./components/Navbar"
 import Hero from "./components/Hero"
@@ -13,8 +12,8 @@ function App() {
         <Routes>
           <Route path="/" element={
             <>
-            <Hero/>
-            <Products/>
+              <Hero/>
+              <Products/>
             </>
         }/>
         </Routes>

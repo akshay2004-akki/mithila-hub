@@ -23,7 +23,7 @@ const Navbar = () => {
               <img src={logo} className="h-[60px] w-[60px] rounded-full" />
               <div className="ml-3 text-sm flex flex-col justify-center">
                 <span className="font-poppins font-semibold text-xl">Mamta Das</span>
-                <span className="text-[28px] font-bold font-poppins">Mithila</span>
+                <span className="text-[28px] font-bold font-poppins">Mithila World</span>
               </div>
             </div>
             <nav>
