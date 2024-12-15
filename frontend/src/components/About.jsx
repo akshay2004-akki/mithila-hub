@@ -5,7 +5,7 @@ import mamta from "../assets/mamta.png";
 function About() {
   return (
     <>
-      <section className="max-h-full pb-12 pt-[120px] px-3">
+      <section className="max-h-full pb-12 pt-[120px] px-3 bg-white">
         <Heading heading="Who We Are" psudo="About_Us" />
         <div className="px-4 pb-12">
           <h2 className="font-semibold text-xl sm:text-2xl font-poppins text-maroon py-3">
