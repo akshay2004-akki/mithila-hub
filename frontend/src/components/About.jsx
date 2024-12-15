@@ -1,4 +1,3 @@
-import Heading from "./Heading";
 import akshay from "../assets/resume pic3.jpeg";
 import mamta from "../assets/mamta.png";
 

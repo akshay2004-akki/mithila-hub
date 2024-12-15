@@ -30,27 +30,27 @@ const Navbar = () => {
               <ul className="hidden text-[18px] sm:flex sm:gap-8 ">
                 <li>
                   <Link to="/" className="text-black 
-                  transition-colors duration-300 before:absolute md:before:content-[''] md:before:h-[1px] md:before:w-[0px] md:before:bottom-1/4 md:before:bg-black hover:before:w-[50px] before:transition-all before:duration-300  hover:text-gold">
+                  transition-colors duration-300 before:absolute md:before:content-[''] md:before:h-[1px] md:before:w-[0px] md:before:bottom-1/4 md:before:bg-black hover:before:w-[55px] before:transition-all before:duration-300  hover:text-gold">
                     Home
                   </Link>
                 </li>
                 <li>
                   <Link to="/gallery" className="text-black 
                   transition-colors duration-300 
-                  before:absolute md:before:content-[''] md:before:h-[1px] md:before:w-[0px] md:before:bottom-1/4 md:before:bg-black hover:before:w-[55px] before:transition-all before:duration-300  hover:text-gold">
+                  before:absolute md:before:content-[''] md:before:h-[1px] md:before:w-[0px] md:before:bottom-1/4 md:before:bg-black hover:before:w-[65px] before:transition-all before:duration-300  hover:text-gold">
                     Gallery
                   </Link>
                 </li>
                 <li>
                   <Link to="/about" className="text-black 
                   transition-colors duration-300
-                  before:absolute md:before:content-[''] md:before:h-[1px] md:before:w-[0px] md:before:bottom-1/4 md:before:bg-black hover:before:w-[75px] before:transition-all before:duration-300   hover:text-gold">
+                  before:absolute md:before:content-[''] md:before:h-[1px] md:before:w-[0px] md:before:bottom-1/4 md:before:bg-black hover:before:w-[82px] before:transition-all before:duration-300   hover:text-gold">
                     About Us
                   </Link>
                 </li>
                 <li className="text-black
                 transition-colors duration-300
-                before:absolute md:before:content-[''] md:before:h-[1px] md:before:w-[0px] md:before:bottom-1/4 md:before:bg-black hover:before:w-[86px] before:transition-all before:duration-300   hover:text-gold">
+                before:absolute md:before:content-[''] md:before:h-[1px] md:before:w-[0px] md:before:bottom-1/4 md:before:bg-black hover:before:w-[100px] before:transition-all before:duration-300   hover:text-gold">
                   <button onClick={() => setToggle3((prev) => !prev)}>
                     Categories
                   </button>
@@ -59,7 +59,7 @@ const Navbar = () => {
                   {" "}
                   <Link to="/contact" className="text-black
                   transition-colors duration-300
-                  before:absolute md:before:content-[''] md:before:h-[1px] md:before:w-[0px] md:before:bottom-1/4 md:before:bg-black hover:before:w-[90px] before:transition-all before:duration-300   hover:text-gold">
+                  before:absolute md:before:content-[''] md:before:h-[1px] md:before:w-[0px] md:before:bottom-1/4 md:before:bg-black hover:before:w-[100px] before:transition-all before:duration-300   hover:text-gold">
                     Contact Us
                   </Link>
                 </li>

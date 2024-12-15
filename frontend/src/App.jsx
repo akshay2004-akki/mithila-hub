@@ -6,6 +6,7 @@ import Reviews from "./components/Reviews"
 import Footer from "./components/Footer"
 import Feedback from "./components/Feedback"
 import About from "./components/About"
+import Contact from "./components/Contact"
 
 function App() {
 
@@ -23,6 +24,7 @@ function App() {
             </>
         }/>
           <Route path="/about" element={<About/>} />
+          <Route path="/contact" element={<Contact/>} />
         </Routes>
         <Footer/>
       </Router>
