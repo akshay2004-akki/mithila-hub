@@ -73,11 +73,12 @@ function Reviews() {
                 
               {reviews.map((review) => (
                 <Tilt
+
                     tiltMaxAngleX={20}
                     tiltMaxAngleY={20}
-                    scale={1.1}
+                    scale={1.2}
                   key={review.id}
-                  className="review-card bg-white p-6 shadow-md rounded-lg hover:shadow-lg transition-shadow duration-300"
+                  className="review-card hover:z-[10] hover:shadow-2xl bg-white p-6 shadow-md rounded-lg transition-shadow duration-300"
                 >
                   <h3 className="font-bold text-lg text-gray-800">
                     {review.name}
