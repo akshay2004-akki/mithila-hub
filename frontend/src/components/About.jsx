@@ -6,7 +6,15 @@ function About() {
   return (
     <>
       <section className="max-h-full pb-12 pt-[120px] px-3 bg-white">
-        <Heading heading="Who We Are" psudo="About_Us" />
+      <h2 className={` relative text-3xl font-bold font-poppins text-center mb-12 before:content-['About_Us'] before:absolute before:text-maroon before:text-[13px] md:before:text-[15px] before:top-[-20px] before:left-1/2 before:-translate-x-1/2 before:translate-y-[50px]`}>
+      <span className="relative z-10 text-2xl md:text-3xl px-4 bg-white">
+        Who We Are
+      </span>
+      <span className="absolute inset-0 flex items-center">
+        <span className="flex-1 w-10 h-[3px] bg-maroon"></span>
+        <span className="flex-1 w-10 h-[3px] bg-maroon"></span>
+      </span>
+    </h2>
         <div className="px-4 pb-12">
           <h2 className="font-semibold text-xl sm:text-2xl font-poppins text-maroon py-3">
             Meet the Artist :{" "}
