@@ -1,4 +1,4 @@
 redirects:
   - source: /*
-    destination: './index.html'
+    destination: ./index.html
     status: 200
