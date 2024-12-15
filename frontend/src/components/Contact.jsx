@@ -1,7 +1,7 @@
 function Contact() {
   return (
     <>
-      <section className="pt-[120px] max-h-full pb-12 font-poppins">
+      <section className="px-3 pt-[120px] max-h-full pb-12 font-poppins">
         <h2
           className={` relative text-3xl font-bold font-poppins text-center mb-12 before:content-['Chat_With_Us'] before:absolute before:text-maroon before:text-[13px] md:before:text-[15px] before:top-[-20px] before:left-1/2 before:-translate-x-1/2 before:translate-y-[50px]`}
         >
