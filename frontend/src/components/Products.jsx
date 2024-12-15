@@ -192,7 +192,7 @@ const Products = () => {
               Chunri (Chunni)
             </span>
             <span className="text-sm sm:text-lg text-blue-500 underline decoration-2 hover:text-blue-600 transition-colors">
-              <Link to="/canvas">View All</Link>
+              <Link to="/chunri">View All</Link>
             </span>
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 items-center">
