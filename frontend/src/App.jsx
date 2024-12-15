@@ -5,6 +5,7 @@ import Products from "./components/Products"
 import Reviews from "./components/Reviews"
 import Footer from "./components/Footer"
 import Feedback from "./components/Feedback"
+import About from "./components/About"
 
 function App() {
 
@@ -21,6 +22,7 @@ function App() {
               <Feedback/>
             </>
         }/>
+          <Route path="/about" element={<About/>} />
         </Routes>
         <Footer/>
       </Router>

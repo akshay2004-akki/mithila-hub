@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
 import { Link } from "react-router-dom";
+import Heading from "./Heading";
 
 const Products = () => {
   const saree = [
@@ -48,13 +49,7 @@ const Products = () => {
   return (
     <section className="py-12 px-3 md:px-12 bg-gray-100">
       <div className="container mx-auto px-6">
-        <h2 className="relative text-3xl font-bold font-poppins text-center mb-12 before:content-['What_We_Sell'] before:absolute before:text-maroon before:text-[13px] md:before:text-[15px] before:top-[-20px] before:left-1/2 before:-translate-x-1/2 before:translate-y-[50px]">
-          <span className="relative z-10 text-2xl md:text-3xl px-4 bg-gray-100">Our Products</span>
-          <span className="absolute inset-0 flex items-center">
-            <span className="flex-1 w-10 h-[3px] bg-maroon"></span>
-            <span className="flex-1 w-10 h-[3px] bg-maroon"></span>
-          </span>
-        </h2>
+        <Heading heading="Our Products" psudo="What_We_Sell" />
 
         {/* Saree Section */}
         <div className="mb-12">
