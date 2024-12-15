@@ -131,11 +131,11 @@ function Gallery() {
           <p className="text-center text-gray-500 text-lg">Loading...</p>
         ) : (
           // Product Grid
-          <div className="flex flex-wrap sm:flex lg:flex-wrap gap-x-8 justify-center sm:gap-x-6 md:gap-x-10 gap-y-4">
+          <div className="flex flex-wrap sm:flex lg:flex-wrap gap-x-6 justify-center sm:gap-x-6 md:gap-x-10 gap-y-4">
             {products?.map((product) => (
               <div
                 key={product.id}
-                className="bg-white shadow-lg rounded-lg overflow-hidden transition-transform transform hover:scale-105 w-44 sm:w-52 p-1"
+                className="bg-white shadow-lg rounded-lg overflow-hidden transition-transform transform hover:scale-105 w-40 sm:w-52 p-1"
               >
                 {/* Product Image */}
                 <img
