@@ -47,7 +47,7 @@ const Products = () => {
   ];
 
   return (
-    <section className="py-12 px-3 md:px-12 bg-gray-100">
+    <section className="py-12 px-3 md:px-12 bg-white">
       <div className="container mx-auto px-6">
         <Heading heading="Our Products" psudo="What_We_Sell" />
 
