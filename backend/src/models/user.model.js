@@ -12,17 +12,21 @@ const userSchema = new mongoose.Schema({
         required : true,
         minlenght: [8, "At least 8 characters required"],
     },
-    role : {
-        type : String,
-        required : true,
-        enum : ["user", "admin"]
+    isAdmin : {
+        type : boolean,
+        default : false
     },
     email : {
         type : String,
-        required : true
+        required : true,
+        unique : true
     },
     avatar : {
         type : String,
+    },
+    refreshToken : {
+        type : String,
+        required : true
     }
 
 },{timestamps:true})
@@ -36,3 +40,25 @@ userSchema.pre("save", async function(next){
 userSchema.methods.comparePassword = async function(password){
     return await bcryptjs.compare(password,this.password)
 }
+
+userSchema.methods.getAccessToken = async function(){
+    const token = jwt.sign({
+        _id : this._id,
+        email : this.email,
+    },process.env.ACCESS_TOKEN_SECRET,{expiresIn: process.env.ACCESS_TOKEN_EXPIRY});
+    return token
+}
+
+userSchema.methods.getRefreshToken = async function(){
+    const token = jwt.sign({
+        _id : this._id,
+        isAdmin : this.isAdmin 
+    }, process.env.REFRESH_TOKEN_SECRET, {expiresIn:REFRESH_TOKEN_EXPIRY});
+    return token
+}
+
+userSchema.methods.verifyAdmin = async function(){
+    return this.isAdmin;
+}
+
+export const User = mongoose.model("User", userSchema)
