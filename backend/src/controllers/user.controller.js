@@ -1,7 +1,7 @@
 import { User } from "../models/user.model.js";
 import { ApiError } from "../utils/ApiError.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
-import { uploadOnCloudinary } from "../utils/cloudinary";
+import { uploadOnCloudinary } from "../utils/cloudinary.js";
 import asyncHandler from '../utils/asyncHandler.js'
 
 const getAccessAndRefreshToken = async (userId)=>{
@@ -19,7 +19,7 @@ const getAccessAndRefreshToken = async (userId)=>{
 export const registerUser = asyncHandler(async(req,res)=>{
     const {fullName, password, email} = req.body;
 
-    if([fullName, password, email, avatar].some((field)=>field?.trim==="")){
+    if([fullName, password, email].some((field)=>field?.trim==="")){
         res.status(400).send("All fields are required")
         throw new ApiError(400,"All fields are required")
     }
@@ -38,8 +38,6 @@ export const registerUser = asyncHandler(async(req,res)=>{
         fullName,
         email,
         password,
-        role,
-        avatar : avatar.secure_url
     })
 
     res.status(201).json(new ApiResponse(201,newUser,"User created successfully"))
@@ -60,9 +58,9 @@ export const loginUser = asyncHandler(async(req,res)=>{
         throw new ApiError(404,"404 User Not Found")
     }
 
-    const isPasswordCorrect = await user.comparePassword(password);
+    const isCorrectPassword = await user.comparePassword(password)
 
-    if(!isPasswordCorrect){
+    if(!isCorrectPassword){
         res.status(409).send("Incorrect Password")
         throw new ApiError(409,"Incorrect Pasword")
     }
@@ -74,8 +72,6 @@ export const loginUser = asyncHandler(async(req,res)=>{
     const options = {
         httpOnly : true,
         secure : false,
-        // sameSite : "strict",
-        // sameSite:"strict"
     }
 
     return res

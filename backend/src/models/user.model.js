@@ -1,6 +1,7 @@
 import mongoose from 'mongoose'
-import bcryptjs from 'bcryptjs'
+import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
+import { ApiError } from '../utils/ApiError.js'
 
 const userSchema = new mongoose.Schema({
     fullName : {
@@ -13,7 +14,7 @@ const userSchema = new mongoose.Schema({
         minlenght: [8, "At least 8 characters required"],
     },
     isAdmin : {
-        type : boolean,
+        type : Boolean,
         default : false
     },
     email : {
@@ -26,7 +27,6 @@ const userSchema = new mongoose.Schema({
     },
     refreshToken : {
         type : String,
-        required : true
     }
 
 },{timestamps:true})
@@ -34,11 +34,11 @@ const userSchema = new mongoose.Schema({
 userSchema.pre("save", async function(next){
     if(!this.isModified("password")) return next();
 
-    this.password = await bcryptjs.hash(this.password, 10);
+    this.password = await bcrypt.hash(this.password, 10);
 })
 
 userSchema.methods.comparePassword = async function(password){
-    return await bcryptjs.compare(password,this.password)
+    return await bcrypt.compare(password, this.password);
 }
 
 userSchema.methods.getAccessToken = async function(){
@@ -50,10 +50,11 @@ userSchema.methods.getAccessToken = async function(){
 }
 
 userSchema.methods.getRefreshToken = async function(){
+    
     const token = jwt.sign({
         _id : this._id,
         isAdmin : this.isAdmin 
-    }, process.env.REFRESH_TOKEN_SECRET, {expiresIn:REFRESH_TOKEN_EXPIRY});
+    }, process.env.REFRESH_TOKEN_SECRET, {expiresIn:process.env.REFRESH_TOKEN_EXPIRY});
     return token
 }
 

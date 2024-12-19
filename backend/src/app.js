@@ -19,5 +19,10 @@ app.use(express.json({limit:"20kb"}))
 app.use(express.urlencoded({extended:true, limit:"20kb"}))
 app.use(express.static("public"))
 
+import userRouter from './Routes/user.routes.js'
+import galleryRouter from './Routes/gallery.routes.js'
+
+app.use("/api/v1/users", userRouter)
+app.use("/api/v1/gallery", galleryRouter)
 
 export default app;
