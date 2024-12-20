@@ -1,13 +1,14 @@
 import { isValidObjectId } from "mongoose";
-import { User } from "../models/user.model";
-import asyncHandler from "../utils/asyncHandler";
-import { ApiError } from "../utils/ApiError";
+import { User } from "../models/user.model.js";
+import asyncHandler from "../utils/asyncHandler.js";
+import { ApiError } from "../utils/ApiError.js";
 
-export const verifyAdmin = asyncHandler(async(req,res)=>{
-    const userId = req.user?._id;
+export const verifyAdmin = asyncHandler(async(req,res, next)=>{
+    const userId = req.user?._id
+    console.log(userId)
 
     if(!isValidObjectId(userId)){
-        throw new ApiError(400, "Invalid User")
+        throw new ApiError(400, "Invalid User") 
     }
 
     try {
@@ -15,7 +16,9 @@ export const verifyAdmin = asyncHandler(async(req,res)=>{
         if(!user){
             throw new ApiError(404, "User not found")
         }
-        return user?.isAdmin;
+        if(user.isAdmin){
+            next()
+        }
     } catch (error) {
         throw new ApiError(400, error.message)
     }

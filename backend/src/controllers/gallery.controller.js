@@ -6,7 +6,7 @@ import asyncHandler from "../utils/asyncHandler.js";
 export const addProducts = asyncHandler(async(req,res)=>{
     const {productName, description, category, price, availability, count=1} = req.body;
     const image = req.files?.image?.map((file) => file.path);
-
+    const newCount  = parseInt(count)
     if([productName, description, category, price, availability, count].some(field=>field.trim()==="")){
         res.status(400).send("Fill all the fields");
         throw new ApiError(400, "Fill all the fields");
@@ -15,7 +15,8 @@ export const addProducts = asyncHandler(async(req,res)=>{
 
     if(existedProduct){
         try {
-            existedProduct.count+=count;
+            const count2=parseInt(existedProduct.count)
+            existedProduct.count=newCount+count2;
             await existedProduct.save({validateBeforeSave:false});
             return res.status(200).json({ message: "Product count updated", product: existedProduct });
         } catch (error) {
@@ -57,6 +58,6 @@ export const getProductsByCategory = asyncHandler(async(req,res)=>{
 })
 
 export const getAllItems = asyncHandler(async(req,res)=>{
-    const items = await Gallery.find();
+    const items = await Gallery.find({});
     res.status(200).json(new ApiResponse(200, items, "Items fetched successfully"))
 })
