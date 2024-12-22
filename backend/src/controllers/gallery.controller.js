@@ -7,7 +7,7 @@ export const addProducts = asyncHandler(async(req,res)=>{
     const {productName, description, category, price, availability, count=1} = req.body;
     const image = req.files?.image?.map((file) => file.path);
     const newCount  = parseInt(count)
-    if([productName, description, category, price, availability, count].some(field=>field.trim()==="")){
+    if([productName, description, category, price, count].some(field=>field.trim()==="")){
         res.status(400).send("Fill all the fields");
         throw new ApiError(400, "Fill all the fields");
     }
@@ -17,6 +17,7 @@ export const addProducts = asyncHandler(async(req,res)=>{
         try {
             const count2=parseInt(existedProduct.count)
             existedProduct.count=newCount+count2;
+            existedProduct.count > 0 ? existedProduct.availability = "In Stock" : existedProduct.availability = "Out of Stock"
             await existedProduct.save({validateBeforeSave:false});
             return res.status(200).json({ message: "Product count updated", product: existedProduct });
         } catch (error) {

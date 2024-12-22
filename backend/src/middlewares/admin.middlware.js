@@ -16,8 +16,11 @@ export const verifyAdmin = asyncHandler(async(req,res, next)=>{
         if(!user){
             throw new ApiError(404, "User not found")
         }
+
         if(user.isAdmin){
-            next()
+            next();
+        }else{
+            throw new ApiError(400,"You are not an Admin")
         }
     } catch (error) {
         throw new ApiError(400, error.message)

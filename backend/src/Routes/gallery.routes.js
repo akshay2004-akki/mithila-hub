@@ -6,7 +6,7 @@ import { verifyJWT } from "../middlewares/auth.middleware.js";
 
 const router = Router();
 
-router.post("/addproducts", verifyJWT ,verifyAdmin,upload.fields([{ name: "image", maxCount: 5 }]) ,addProducts)
+router.post("/addproducts",verifyJWT,verifyAdmin,upload.fields([{ name: "image", maxCount: 5 }]) ,addProducts)
 router.get("/categories/:category", getProductsByCategory);
 router.get("/", getAllItems) 
 

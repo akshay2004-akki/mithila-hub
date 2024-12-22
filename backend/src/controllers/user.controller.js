@@ -74,6 +74,8 @@ export const loginUser = asyncHandler(async(req,res)=>{
         secure : false,
     }
 
+    // req.user=loggedInUser;
+
     return res
         .status(200)
         .cookie("accessToken", accessToken, options)
