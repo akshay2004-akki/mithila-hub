@@ -13,6 +13,7 @@ import Chunri from "./components/Chunri"
 import BedSheet from "./components/BedSheet"
 import Canvas from "./components/Canvas"
 import Custom from "./components/Custom"
+import Admin from "./components/Admin"
 
 function App() {
 
@@ -32,11 +33,12 @@ function App() {
           <Route path="/about" element={<About/>} />
           <Route path="/contact" element={<Contact/>} />
           <Route path="/gallery" element={<Gallery/>} />
-          <Route path="/sarees" element={<Saree/>} />
-          <Route path="/chunri" element={<Chunri/>} />
-          <Route path="/bedsheet" element={<BedSheet/>} />
-          <Route path="/canvas" element={<Canvas/>} />
+          <Route path="/category/:category" element={<Saree/>} />
+          <Route path="/category/:chunri" element={<Chunri/>} />
+          <Route path="/category/:bedsheet" element={<BedSheet/>} />
+          <Route path="/category/:canvas" element={<Canvas/>} />
           <Route path="/custom" element={<Custom/>} />
+          <Route path="/profile" element={<Admin/>} />
         </Routes>
         <Footer/>
       </Router>

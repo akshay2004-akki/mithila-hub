@@ -27,30 +27,30 @@ const Navbar = () => {
               </div>
             </div>
             <nav>
-              <ul className="hidden text-[18px] sm:flex sm:gap-8 ">
+              <ul className="hidden text-[15px] md:flex sm:gap-[21px] ">
                 <li>
                   <Link to="/" className="text-black 
-                  transition-colors duration-300 before:absolute md:before:content-[''] md:before:h-[1px] md:before:w-[0px] md:before:bottom-1/4 md:before:bg-black hover:before:w-[55px] before:transition-all before:duration-300  hover:text-gold">
+                  transition-colors duration-300 before:absolute md:before:content-[''] md:before:h-[1px] md:before:w-[0px] md:before:bottom-1/4 md:before:bg-black hover:before:w-[45px] before:transition-all before:duration-300  hover:text-gold">
                     Home
                   </Link>
                 </li>
                 <li>
                   <Link to="/gallery" className="text-black 
                   transition-colors duration-300 
-                  before:absolute md:before:content-[''] md:before:h-[1px] md:before:w-[0px] md:before:bottom-1/4 md:before:bg-black hover:before:w-[65px] before:transition-all before:duration-300  hover:text-gold">
+                  before:absolute md:before:content-[''] md:before:h-[1px] md:before:w-[0px] md:before:bottom-1/4 md:before:bg-black hover:before:w-[50px] before:transition-all before:duration-300  hover:text-gold">
                     Gallery
                   </Link>
                 </li>
                 <li>
                   <Link to="/about" className="text-black 
                   transition-colors duration-300
-                  before:absolute md:before:content-[''] md:before:h-[1px] md:before:w-[0px] md:before:bottom-1/4 md:before:bg-black hover:before:w-[82px] before:transition-all before:duration-300   hover:text-gold">
+                  before:absolute md:before:content-[''] md:before:h-[1px] md:before:w-[0px] md:before:bottom-1/4 md:before:bg-black hover:before:w-[67px] before:transition-all before:duration-300   hover:text-gold">
                     About Us
                   </Link>
                 </li>
                 <li className="text-black
                 transition-colors duration-300
-                before:absolute md:before:content-[''] md:before:h-[1px] md:before:w-[0px] md:before:bottom-1/4 md:before:bg-black hover:before:w-[100px] before:transition-all before:duration-300   hover:text-gold">
+                before:absolute md:before:content-[''] md:before:h-[1px] md:before:w-[0px] md:before:bottom-1/4 md:before:bg-black hover:before:w-[85px] before:transition-all before:duration-300   hover:text-gold">
                   <button onClick={() => setToggle3((prev) => !prev)}>
                     Categories
                   </button>
@@ -59,8 +59,16 @@ const Navbar = () => {
                   {" "}
                   <Link to="/contact" className="text-black
                   transition-colors duration-300
-                  before:absolute md:before:content-[''] md:before:h-[1px] md:before:w-[0px] md:before:bottom-1/4 md:before:bg-black hover:before:w-[100px] before:transition-all before:duration-300   hover:text-gold">
+                  before:absolute md:before:content-[''] md:before:h-[1px] md:before:w-[0px] md:before:bottom-1/4 md:before:bg-black hover:before:w-[85px] before:transition-all before:duration-300   hover:text-gold">
                     Contact Us
+                  </Link>
+                </li>
+                <li>
+                  {" "}
+                  <Link to="/profile" className="text-black
+                  transition-colors duration-300
+                  before:absolute md:before:content-[''] md:before:h-[1px] md:before:w-[0px] md:before:bottom-1/4 md:before:bg-black hover:before:w-[45px] before:transition-all before:duration-300   hover:text-gold">
+                    Profile
                   </Link>
                 </li>
               </ul>
@@ -74,7 +82,7 @@ const Navbar = () => {
                   <i className="fa-solid fa-x absolute right-2 text-white"></i>
                 </button>
                 <Link
-                  to="/sarees"
+                  to="/category/Saree"
                   className="py-3 text-slate-500 hover:text-white"
                 >
                   Saree
@@ -105,7 +113,7 @@ const Navbar = () => {
                 </Link>
               </div>
 
-              <div className="block sm:hidden">
+              <div className="block md:hidden">
                 <button
                   onClick={() => {setToggle((prev) =>!prev); setToggle2(false)}}
                   className="font-bold text-black text-2xl transition-all duration-300"
@@ -143,6 +151,10 @@ const Navbar = () => {
                 transition-colors duration-300  hover:text-gold p-2">
                   Contact Us
                 </Link>
+                <Link to="/profile" className="text-white 
+                transition-colors duration-300  hover:text-gold p-2">
+                  Profile
+                </Link>
               </div>
               <div
                 className={`absolute right-[150px] py-2 px-4 bg-black flex flex-col sm:hidden top-48 rounded ${
@@ -153,7 +165,7 @@ const Navbar = () => {
                   <i className="fa-solid fa-x absolute right-2 text-white"></i>
                 </button>
                 <Link
-                  to="/sarees"
+                  to="/category/Saree"
                   className="py-3 text-slate-300 hover:text-white"
                   onClick={() => {
                     setToggle(false);

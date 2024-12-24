@@ -1,8 +1,23 @@
 /* eslint-disable no-unused-vars */
 import { useEffect, useState } from "react";
-
+import axios from "axios";
 function Gallery() {
     // const [products, setProducts] = useState([]);
+
+    useEffect(()=>{
+      const fetchGallery = async()=>{
+        try {
+          const response = await axios.get("http://localhost:5000/api/v1/gallery/", {withCredentials:true})
+          console.log(response.data.data);
+          
+        } catch (error) {
+          console.log(error.message);
+          
+        }
+      }
+      fetchGallery();
+    },[])
+
   const [loading, setLoading] = useState(false);
   const products = [
     {
@@ -24,73 +39,73 @@ function Gallery() {
       img: "https://via.placeholder.com/150",
     },
     {
-        id: 1,
+        id: 12,
         name: "Product 1",
         price: "$25",
         img: "https://via.placeholder.com/150",
       },
       {
-        id: 2,
+        id: 22,
         name: "Product 2",
         price: "$30",
         img: "https://via.placeholder.com/150",
       },
       {
-        id: 3,
+        id: 32,
         name: "Product 3",
         price: "$45",
         img: "https://via.placeholder.com/150",
       },
       {
-        id: 1,
+        id: 21,
         name: "Product 1",
         price: "$25",
         img: "https://via.placeholder.com/150",
       },
       {
-        id: 2,
+        id: 42,
         name: "Product 2",
         price: "$30",
         img: "https://via.placeholder.com/150",
       },
       {
-        id: 3,
+        id: 93,
         name: "Product 3",
         price: "$45",
         img: "https://via.placeholder.com/150",
       },
       {
-        id: 1,
+        id: 41,
         name: "Product 1",
         price: "$25",
         img: "https://via.placeholder.com/150",
       },
       {
-        id: 2,
+        id: 62,
         name: "Product 2",
         price: "$30",
         img: "https://via.placeholder.com/150",
       },
       {
-        id: 3,
+        id: 73,
         name: "Product 3",
         price: "$45",
         img: "https://via.placeholder.com/150",
       },
       {
-        id: 1,
+        id: 31,
         name: "Product 1",
         price: "$25",
         img: "https://via.placeholder.com/150",
       },
       {
-        id: 2,
+        id: 52,
         name: "Product 2",
         price: "$30",
         img: "https://via.placeholder.com/150",
       },
       {
-        id: 3,
+        id: 38,
         name: "Product 3",
         price: "$45",
         img: "https://via.placeholder.com/150",

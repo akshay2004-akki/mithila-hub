@@ -1,4 +1,27 @@
+import axios from "axios";
+import { useEffect } from "react";
+import { useParams } from "react-router-dom";
+
 function Saree() {
+  const {category} = useParams()
+  console.log(category);
+  
+  useEffect(()=>{
+    const fetchProducts = async ()=>{
+      try {
+        const products = await axios.get(`http://localhost:5000/api/v1/gallery/categories/${category}`, {withCredentials:true})
+        const data = products.data.data;
+        // const jsondata = data.json();
+        console.log(data);
+        
+      } catch (error) {
+        console.log(error);
+        
+      }
+    }
+    fetchProducts();
+  },[])
+
   return (
     <>
       <section className="pb-12 pt-[120px] px-3 max-h-full ">

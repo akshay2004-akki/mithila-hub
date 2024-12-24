@@ -2,6 +2,7 @@ import { Gallery } from "../models/gallery.model.js";
 import { ApiError } from "../utils/ApiError.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
 import asyncHandler from "../utils/asyncHandler.js";
+import {uploadOnCloudinary} from '../utils/cloudinary.js' 
 
 export const addProducts = asyncHandler(async(req,res)=>{
     const {productName, description, category, price, availability, count=1} = req.body;
@@ -25,6 +26,24 @@ export const addProducts = asyncHandler(async(req,res)=>{
         }
     }
 
+    let imagePaths = [];
+  if (req.files?.image) {
+    try {
+      const uploadPromises = req.files.image.map(async (file) => {
+        const uploadedFile = await uploadOnCloudinary(file.path);
+        if (uploadedFile) {
+          return uploadedFile.secure_url;
+        } else {
+          throw new Error("Error uploading file to Cloudinary");
+        }
+      });
+
+      imagePaths = await Promise.all(uploadPromises);
+    } catch (error) {
+      throw new ApiError(500, "Error uploading images");
+    }
+  }
+
     try {
         const newProduct = await Gallery.create({
             productName,
@@ -33,7 +52,7 @@ export const addProducts = asyncHandler(async(req,res)=>{
             price,
             count,
             availability : count>0 ? "In Stock" : "Out of Stock",
-            image
+            image : imagePaths
         })
         return res.status(201).json({ message: "Product added", product: newProduct });
     } catch (error) {
@@ -43,6 +62,8 @@ export const addProducts = asyncHandler(async(req,res)=>{
 
 export const getProductsByCategory = asyncHandler(async(req,res)=>{
     const {category} = req.params;
+    // console.log(category);
+    
 
     if(!["Saree", "Chunri", "Canvas", "Bed Sheet"].includes(category)){
         throw new ApiError(400, "Invalid category name");
