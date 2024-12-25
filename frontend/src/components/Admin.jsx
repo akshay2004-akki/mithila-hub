@@ -30,18 +30,24 @@ const AdminAddProduct = () => {
     const form = new FormData();
     for (const key in formData) {
       if (key === "image") {
-        Array.from(formData.image).forEach((file) => form.append("image", file));
+        Array.from(formData.image).forEach((file) =>
+          form.append("image", file)
+        );
       } else {
         form.append(key, formData[key]);
       }
     }
 
     try {
-      const response = await axios.post("http://localhost:5000/api/v1/gallery/addproducts", form, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
+      const response = await axios.post(
+        "http://localhost:5000/api/v1/gallery/addproducts",
+        form,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
       setMessage(response.data.message);
       setFormData({
         productName: "",
@@ -58,15 +64,19 @@ const AdminAddProduct = () => {
       setLoading(false);
     }
   };
- 
+
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-100">
-      <div className="w-full max-w-lg bg-white rounded-lg shadow-lg p-6">
-        <h2 className="text-2xl font-bold text-center text-gray-800 mb-4">Admin Panel: Add Product</h2>
+    <div className="flex justify-left px-3 pt-[40px] items-center min-h-screen font-poppins">
+      <div className="w-full max-w-lg bg-white rounded-lg p-6">
+        <h2 className="text-2xl font-bold text-center text-gray-800 mb-4">
+          Admin Panel: <span className="text-maroon">Add Product</span>
+        </h2>
         {message && (
           <div
             className={`mb-4 text-center px-4 py-2 rounded-lg ${
-              message.includes("Error") ? "bg-red-200 text-red-800" : "bg-green-200 text-green-800"
+              message.includes("Error")
+                ? "bg-red-200 text-red-800"
+                : "bg-green-200 text-green-800"
             }`}
           >
             {message}
@@ -74,7 +84,10 @@ const AdminAddProduct = () => {
         )}
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label htmlFor="productName" className="block text-gray-700 font-medium">
+            <label
+              htmlFor="productName"
+              className="block text-gray-700 font-medium"
+            >
               Product Name
             </label>
             <input
@@ -87,8 +100,12 @@ const AdminAddProduct = () => {
               required
             />
           </div>
+
           <div>
-            <label htmlFor="description" className="block text-gray-700 font-medium">
+            <label
+              htmlFor="description"
+              className="block text-gray-700 font-medium"
+            >
               Description
             </label>
             <textarea
@@ -101,48 +118,62 @@ const AdminAddProduct = () => {
               required
             ></textarea>
           </div>
-          <div>
-            <label htmlFor="category" className="block text-gray-700 font-medium">
-              Category
-            </label>
-            <input
-              type="text"
-              id="category"
-              name="category"
-              value={formData.category}
-              onChange={handleChange}
-              className="w-full mt-1 p-2 border rounded-md focus:ring focus:ring-blue-200"
-              required
-            />
+
+          {/* Inline Fields */}
+          <div className="flex flex-wrap gap-4">
+            <div className="flex-1">
+              <label
+                htmlFor="category"
+                className="block text-gray-700 font-medium"
+              >
+                Category
+              </label>
+              <input
+                type="text"
+                id="category"
+                name="category"
+                value={formData.category}
+                onChange={handleChange}
+                className="w-full mt-1 p-2 border rounded-md focus:ring focus:ring-blue-200"
+                required
+              />
+            </div>
+            <div className="flex-1">
+              <label
+                htmlFor="price"
+                className="block text-gray-700 font-medium"
+              >
+                Price
+              </label>
+              <input
+                type="number"
+                id="price"
+                name="price"
+                value={formData.price}
+                onChange={handleChange}
+                className="w-full mt-1 p-2 border rounded-md focus:ring focus:ring-blue-200"
+                required
+              />
+            </div>
+            <div className="flex-1">
+              <label
+                htmlFor="count"
+                className="block text-gray-700 font-medium"
+              >
+                Count
+              </label>
+              <input
+                type="number"
+                id="count"
+                name="count"
+                value={formData.count}
+                onChange={handleChange}
+                className="w-full mt-1 p-2 border rounded-md focus:ring focus:ring-blue-200"
+                required
+              />
+            </div>
           </div>
-          <div>
-            <label htmlFor="price" className="block text-gray-700 font-medium">
-              Price
-            </label>
-            <input
-              type="number"
-              id="price"
-              name="price"
-              value={formData.price}
-              onChange={handleChange}
-              className="w-full mt-1 p-2 border rounded-md focus:ring focus:ring-blue-200"
-              required
-            />
-          </div>
-          <div>
-            <label htmlFor="count" className="block text-gray-700 font-medium">
-              Count
-            </label>
-            <input
-              type="number"
-              id="count"
-              name="count"
-              value={formData.count}
-              onChange={handleChange}
-              className="w-full mt-1 p-2 border rounded-md focus:ring focus:ring-blue-200"
-              required
-            />
-          </div>
+
           <div>
             <label htmlFor="image" className="block text-gray-700 font-medium">
               Product Image
@@ -157,10 +188,13 @@ const AdminAddProduct = () => {
               required
             />
           </div>
+
           <button
             type="submit"
             className={`w-full py-2 rounded-md text-white font-semibold ${
-              loading ? "bg-gray-400 cursor-not-allowed" : "bg-blue-500 hover:bg-blue-600"
+              loading
+                ? "bg-gray-400 cursor-not-allowed"
+                : "bg-maroon hover:bg-gold transition-all duration-100"
             }`}
             disabled={loading}
           >
