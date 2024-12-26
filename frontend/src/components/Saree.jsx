@@ -1,10 +1,7 @@
 import axios from "axios";
 import { useEffect } from "react";
-import { useParams } from "react-router-dom";
 
-function Saree() {
-  const {category} = useParams()
-  console.log(category);
+function Saree({category}) {
   
   useEffect(()=>{
     const fetchProducts = async ()=>{

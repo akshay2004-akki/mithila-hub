@@ -62,7 +62,7 @@ export const addProducts = asyncHandler(async(req,res)=>{
 
 export const getProductsByCategory = asyncHandler(async(req,res)=>{
     const {category} = req.params;
-    // console.log(category);
+    console.log(category);
     
 
     if(!["Saree", "Chunri", "Canvas", "Bed Sheet"].includes(category)){

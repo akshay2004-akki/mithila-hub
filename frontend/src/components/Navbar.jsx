@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../assets/image.png";
 
 const Navbar = () => {
@@ -15,6 +15,8 @@ const Navbar = () => {
     setToggle2(false)
     setToggle3(false)
   }
+
+  const route = useNavigate();
 
   return (
     <>
@@ -87,7 +89,7 @@ const Navbar = () => {
             </li>
             <li>
               <button
-                // onClick={() => navigate("/login")}
+                onClick={() => route("/login")}
                 className={`text-black transition-colors duration-300 hover:text-gold ${isLoggedIn?"hidden":"block"}`}
               >
                 Login
@@ -107,13 +109,13 @@ const Navbar = () => {
             <Link to="/category/Saree" className="py-3 text-slate-500 hover:text-white">
               Saree
             </Link>
-            <Link to="/chunri" className="py-3 text-slate-500 hover:text-white">
+            <Link to="/category/Chunri" className="py-3 text-slate-500 hover:text-white">
               Chunari
             </Link>
-            <Link to="/bedsheet" className="py-3 text-slate-500 hover:text-white">
+            <Link to="/category/Bed Sheet" className="py-3 text-slate-500 hover:text-white">
               Bed Sheet
             </Link>
-            <Link to="/canvas" className="py-3 text-slate-500 hover:text-white">
+            <Link to="/category/Canvas" className="py-3 text-slate-500 hover:text-white">
               Canvas
             </Link>
             <Link to="/custom" className="py-3 text-[15px] text-slate-500 hover:text-white">
@@ -164,7 +166,7 @@ const Navbar = () => {
               Profile
             </Link>
             <button
-              // onClick={() => navigate("/login")}
+              onClick={() => route("/login")}
               className="text-white transition-colors duration-300 hover:text-gold p-2"
             >
               Login
@@ -182,13 +184,13 @@ const Navbar = () => {
             <Link to="/category/Saree" className="py-3 text-slate-300 hover:text-white">
               Saree
             </Link>
-            <Link to="/chunri" className="py-3 text-slate-300 hover:text-white">
+            <Link to="/category/Chunri" className="py-3 text-slate-300 hover:text-white">
               Chunari
             </Link>
-            <Link to="/bedsheet" className="py-3 text-slate-300 hover:text-white">
+            <Link to="/category/Bed Sheet" className="py-3 text-slate-300 hover:text-white">
               Bed Sheet
             </Link>
-            <Link to="/canvas" className="py-3 text-slate-300 hover:text-white">
+            <Link to="/category/Canvas" className="py-3 text-slate-300 hover:text-white">
               Canvas
             </Link>
             <Link to="/custom" className="py-3 text-[15px] text-slate-300 hover:text-white">

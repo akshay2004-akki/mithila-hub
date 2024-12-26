@@ -1,5 +1,22 @@
+import axios from "axios";
+import { useEffect } from "react";
 
-function BedSheet() {
+function BedSheet({category}) {
+
+  useEffect(()=>{
+    const fetchBedSheetProducts = async()=>{
+      try {
+        const res = await axios.get(`http://localhost:5000/api/v1/gallery/categories/${category}`, {withCredentials:true})
+        console.log(res.data);
+        
+      } catch (error) {
+        console.log(error.message);
+        
+      }
+    }
+    fetchBedSheetProducts()
+  },[])
+  
   return (
     <section className="pb-12 pt-[120px] px-3 max-h-full ">
         <h2

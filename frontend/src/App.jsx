@@ -8,12 +8,11 @@ import Feedback from "./components/Feedback"
 import About from "./components/About"
 import Contact from "./components/Contact"
 import Gallery from "./components/Gallery"
-import Saree from "./components/Saree"
-import Chunri from "./components/Chunri"
-import BedSheet from "./components/BedSheet"
-import Canvas from "./components/Canvas"
 import Custom from "./components/Custom"
 import Admin from "./components/Admin"
+import Login from "./components/Login"
+import Signup from "./components/Signup"
+import Category from "./Category"
 
 function App() {
 
@@ -33,12 +32,11 @@ function App() {
           <Route path="/about" element={<About/>} />
           <Route path="/contact" element={<Contact/>} />
           <Route path="/gallery" element={<Gallery/>} />
-          <Route path="/category/:category" element={<Saree/>} />
-          <Route path="/category/:chunri" element={<Chunri/>} />
-          <Route path="/category/:bedsheet" element={<BedSheet/>} />
-          <Route path="/category/:canvas" element={<Canvas/>} />
+          <Route path="/category/:category" element={<Category/>} />
           <Route path="/custom" element={<Custom/>} />
           <Route path="/profile" element={<Admin/>} />
+          <Route path="/login" element={<Login/>} />
+          <Route path="/signup" element={<Signup/>} />
         </Routes>
         <Footer/>
       </Router>
