@@ -38,9 +38,9 @@ export const addProducts = asyncHandler(async(req,res)=>{
         }
       });
 
-      imagePaths = await Promise.all(uploadPromises);
+      imagePaths = await Promise.all(uploadPromises); 
     } catch (error) {
-      throw new ApiError(500, "Error uploading images");
+      throw new ApiError(500, "Error uploading images"); 
     }
   }
 
@@ -52,11 +52,11 @@ export const addProducts = asyncHandler(async(req,res)=>{
             price,
             count,
             availability : count>0 ? "In Stock" : "Out of Stock",
-            image : imagePaths
+            image : imagePaths? imagePaths : ""
         })
         return res.status(201).json({ message: "Product added", product: newProduct });
     } catch (error) {
-        throw new ApiError(500, error.message)
+        throw new ApiError(500, error.message);
     }
 })
 

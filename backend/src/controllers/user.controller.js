@@ -3,6 +3,7 @@ import { ApiError } from "../utils/ApiError.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
 import { uploadOnCloudinary } from "../utils/cloudinary.js";
 import asyncHandler from '../utils/asyncHandler.js'
+import { isValidObjectId } from "mongoose";
 
 const getAccessAndRefreshToken = async (userId)=>{
     const user = await User.findById(userId);
@@ -106,4 +107,19 @@ export const logOutUser = asyncHandler(async(req,res)=>{
             .clearCookie("accessToken", options)
             .clearCookie("refreshToken", options)
             .json(new ApiResponse(200,{}, "User logged out successfully"))
+})
+
+export const getUserDetails = asyncHandler(async(req,res)=>{
+    const userId = req.user?._id;
+    if(!isValidObjectId(userId)){
+        throw new ApiError(404,"Invalid User Id");
+    }
+
+    const userDetails = await User.findById(userId).select("-refreshToken -password");
+
+    if(!userDetails){
+        throw new ApiError(404,"User Not Found")
+    }
+
+    return res.status(200).json(new ApiResponse(200, userDetails,"User data fetched successfully"));
 })
