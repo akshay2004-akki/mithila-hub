@@ -38,3 +38,19 @@ export const removeFromCart = asyncHandler(async(req,res)=>{
     const {productId} = req.body;
     
 })
+
+export const getUserCart = asyncHandler(async(req,res)=>{
+    const userId = req.user?._id;
+
+    if(!isValidObjectId(userId)){
+        throw new ApiError(400,"Invalid Object Id")
+    }
+
+    const cart = await Cart.find({user:userId}).populate("products");
+
+    if(!cart){
+        return res.status(404).json(new ApiResponse(404,[],"No WishList products found"))
+    }
+
+    return res.status(200).json(new ApiResponse(200, cart, "user cart fetched successfully"))
+})

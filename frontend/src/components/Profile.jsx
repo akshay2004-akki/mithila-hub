@@ -6,15 +6,18 @@ function Profile() {
   const [userData, setUserData] = useState({});
   const [loading, setLoading] = useState(true);
   const [activeMenu, setActiveMenu] = useState("Dashboard");
+  const [usercart, setUsercart] = useState([])
 
   useEffect(() => {
     // Fetch user data (replace with actual API endpoint)
     axios
-      .get("http://localhost:5000/api/v1/users/", {
+      .get("http://localhost:5000/api/v1/users/userdetails", {
         withCredentials: true,
       })
       .then((res) => {
-        setUserData(res.data.user);
+        // setUserData(res.data.user);
+        // console.log(res.data.data);
+        setUserData(res.data.data)
         setLoading(false);
       })
       .catch((err) => {
@@ -22,6 +25,14 @@ function Profile() {
         setLoading(false);
       });
   }, []);
+
+  useEffect(()=>{
+    axios.get("http://localhost:5000/api/v1/cart/getUsercart", {withCredentials:true})
+        .then((res)=>{
+          console.log(res.data.data[0].products);
+          setUsercart(res.data.data[0].products)
+        })
+  },[])
   const route = useNavigate()
   const handleLogout = async()=>{
     try {
@@ -41,10 +52,10 @@ function Profile() {
       case "Dashboard":
         return (
           <div>
-            <h2 className="text-2xl font-semibold text-gold mb-4">Dashboard</h2>
-            <p className="text-gray-800">Name: {userData.name}</p>
-            <p className="text-gray-800">Email: {userData.email}</p>
-            <p className="text-gray-800">Contact: {userData.contact}</p>
+            <h2 className="text-2xl text-center font-semibold text-gold mb-4">Dashboard</h2>
+            <p className="text-gray-800 text-xl">Name: {userData.fullName}</p> <br />
+            <p className="text-gray-800 text-xl">Email: {userData.email}</p> <br />
+            <p className="text-gray-800 text-xl">Contact: {userData?.contact}</p><br />
           </div>
         );
       case "Order History":
@@ -89,9 +100,43 @@ function Profile() {
       case "Wishlist":
         return (
           <div>
-            <h2 className="text-2xl font-semibold text-gold mb-4">Wishlist</h2>
-            <p className="text-gray-600">Your wishlist is empty.</p>
-          </div>
+      <h2 className="text-2xl font-semibold text-gold mb-4">Wishlist</h2>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {usercart.length > 0 ? (
+          usercart.map((item) => (
+            <div
+              key={item._id}
+              className="bg-white shadow-lg rounded-lg p-4 flex flex-col items-center"
+            >
+              <img
+                src={item.image.length > 0 ? item.image[0] : "/default-image.jpg"}
+                alt={item.productName}
+                className="h-40 w-full object-cover rounded-lg mb-4"
+              />
+              <h3 className="text-lg font-semibold text-gray-800">{item.productName}</h3>
+              <p className="text-sm text-gray-600">{item.description}</p>
+              <p className="text-lg font-bold text-gold mt-2">₹{item.price}</p>
+              <p
+                className={`mt-1 ${
+                  item.availability === "In Stock"
+                    ? "text-green-500"
+                    : "text-red-500"
+                }`}
+              >
+                {item.availability}
+              </p>
+              <button
+                className="mt-4 bg-gold text-white py-2 px-4 rounded hover:bg-gold-dark transition-all"
+              >
+                Remove from Wishlist
+              </button>
+            </div>
+          ))
+        ) : (
+          <p className="text-gray-600">No items in your wishlist.</p>
+        )}
+      </div>
+    </div>
         );
       case "Account Settings":
         return (
@@ -163,7 +208,7 @@ function Profile() {
         </div>
 
         {/* Main Content */}
-        <div className="w-full sm:w-3/4 p-6">{renderContent()}</div>
+        <div className="w-full h-96 overflow-scroll sm:w-3/4 p-6">{renderContent()}</div>
       </div>
     </section>
   );
