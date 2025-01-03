@@ -26,6 +26,7 @@ const Login = ({setIsLoggedIn}) => {
         setIsLoggedIn(true)
         localStorage.setItem("isLoggedIn", true)
         route("/")
+        window.location.reload();
         
         
     } catch (error) {

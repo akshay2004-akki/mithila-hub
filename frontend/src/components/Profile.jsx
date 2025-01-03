@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function Profile() {
   const [userData, setUserData] = useState({});
@@ -9,7 +10,7 @@ function Profile() {
   useEffect(() => {
     // Fetch user data (replace with actual API endpoint)
     axios
-      .get("http://localhost:5000/api/v1/users/profile", {
+      .get("http://localhost:5000/api/v1/users/", {
         withCredentials: true,
       })
       .then((res) => {
@@ -21,6 +22,19 @@ function Profile() {
         setLoading(false);
       });
   }, []);
+  const route = useNavigate()
+  const handleLogout = async()=>{
+    try {
+      const res = await axios.post("http://localhost:5000/api/v1/users/logout",{}, {withCredentials:true})
+      alert(res.data.message)
+      localStorage.removeItem("isLoggedIn")
+      route("/")
+      window.location.reload();
+      
+    } catch (error) {
+      alert(error.message)
+    }
+  }
 
   const renderContent = () => {
     switch (activeMenu) {
@@ -90,6 +104,10 @@ function Profile() {
             </p>
           </div>
         );
+        case "Logout":
+          return (
+            <button onClick={handleLogout} className="bg-maroon hover:bg-red-400 transition-all duration-100 p-1 px-4 text-2xl rounded-xl text-white">Logout</button>
+          )
       default:
         return null;
     }
@@ -104,17 +122,23 @@ function Profile() {
   }
 
   return (
-    <section className="py-4 pt-[100px] px-3 min-h-screen w-full">
-      <div className="h-auto w-full flex flex-col items-center justify-center">
-        <img src="" alt="" className="h-28 w-28 sm:h-40 sm:w-40 rounded-full" />
-        <p className="font-poppins text-2xl sm:text-3xl">
-          Welcome Back, <span className="font-bold">Akshay</span>
+    <section className="py-6 pt-[100px] px-4 min-h-screen w-full font-poppins">
+      {/* Profile Header */}
+      <div className="flex flex-col items-center justify-center mb-8">
+        <img
+          src=""
+          alt="Profile Avatar"
+          className="h-24 w-24 sm:h-36 sm:w-36 rounded-full object-cover border-4 border-gold shadow-md"
+        />
+        <p className="text-2xl sm:text-3xl mt-4 text-gray-800 text-center">
+          Welcome Back, <span className="font-bold text-gold">Akshay</span>
         </p>
       </div>
-      {/* Profile Menus */}
-      <div className="max-w-5xl mx-auto bg-white rounded-lg shadow-lg flex">
+
+      {/* Profile Menu Section */}
+      <div className="max-w-6xl mx-auto bg-white rounded-xl shadow-lg flex flex-col sm:flex-row overflow-hidden">
         {/* Sidebar Menu */}
-        <div className="w-1/4 border-r border-gray-300 p-4">
+        <div className="w-full sm:w-1/4 border-b sm:border-b-0 sm:border-r border-gray-300 bg-gray-100 p-4">
           <ul className="space-y-4">
             {[
               "Dashboard",
@@ -125,9 +149,11 @@ function Profile() {
             ].map((menu) => (
               <li
                 key={menu}
-                className={`cursor-pointer text-lg font-medium ${
-                  activeMenu === menu ? "text-gold" : "text-gray-700"
-                } hover:text-gold`}
+                className={`cursor-pointer text-lg font-medium transition-colors duration-300 ${
+                  activeMenu === menu
+                    ? "text-gold font-semibold"
+                    : "text-gray-700 hover:text-gold"
+                }`}
                 onClick={() => setActiveMenu(menu)}
               >
                 {menu}
@@ -137,7 +163,7 @@ function Profile() {
         </div>
 
         {/* Main Content */}
-        <div className="w-3/4 p-6">{renderContent()}</div>
+        <div className="w-full sm:w-3/4 p-6">{renderContent()}</div>
       </div>
     </section>
   );
