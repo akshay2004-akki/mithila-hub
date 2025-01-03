@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../assets/image.png";
 
@@ -9,6 +9,10 @@ const Navbar = () => {
   const [toggle3, setToggle3] = useState(false);
 
   const [isLoggedIn, setIsLoggedIn] = useState(false)
+  useEffect(()=>{
+    const status = localStorage.getItem("isLoggedIn");
+    setIsLoggedIn(status)
+  },[isLoggedIn])
 
   window.onscroll = ()=>{
     setToggle(false)
@@ -87,7 +91,7 @@ const Navbar = () => {
                 Profile
               </Link>
             </li>
-            <li>
+            <li className={`${!isLoggedIn?"block":"hidden"}`}>
               <button
                 onClick={() => route("/login")}
                 className={`text-black transition-colors duration-300 hover:text-gold ${isLoggedIn?"hidden":"block"}`}
@@ -162,12 +166,12 @@ const Navbar = () => {
             <Link to="/contact" className="text-white transition-colors duration-300 hover:text-gold p-2">
               Contact Us
             </Link>
-            <Link to="/profile" className="text-white transition-colors duration-300 hover:text-gold p-2">
+            <Link to="/profile" className={`text-white transition-colors duration-300 hover:text-gold p-2 ${isLoggedIn?"block":"hidden"}`}>
               Profile
             </Link>
             <button
               onClick={() => route("/login")}
-              className="text-white transition-colors duration-300 hover:text-gold p-2"
+              className={`text-white transition-colors duration-300 hover:text-gold p-2 ${!isLoggedIn?"block":"hidden"}`}
             >
               Login
             </button>

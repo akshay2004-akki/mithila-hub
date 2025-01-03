@@ -13,13 +13,17 @@ import Admin from "./components/Admin"
 import Login from "./components/Login"
 import Signup from "./components/Signup"
 import Category from "./Category"
+import { useState } from "react"
+import Profile from "./components/Profile"
 
 function App() {
+
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   return (
     <>
       <Router>
-        <Navbar/>
+        <Navbar isLoggedIn={isLoggedIn} />
         <Routes>
           <Route path="/" element={
             <>
@@ -34,8 +38,8 @@ function App() {
           <Route path="/gallery" element={<Gallery/>} />
           <Route path="/category/:category" element={<Category/>} />
           <Route path="/custom" element={<Custom/>} />
-          <Route path="/profile" element={<Admin/>} />
-          <Route path="/login" element={<Login/>} />
+          <Route path="/profile" element={<Profile/>} />
+          <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
           <Route path="/signup" element={<Signup/>} />
         </Routes>
         <Footer/>

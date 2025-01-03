@@ -10,7 +10,7 @@ dotenv.config({
 const app = express();
 
 app.use(cors({
-    origin : process.env.CORS_ORIGIN,
+    origin : [process.env.CORS_ORIGIN, "https://mithila-hub.onrender.com"],
     credentials : true
 }))
 
@@ -21,8 +21,10 @@ app.use(express.static("public"))
 
 import userRouter from './Routes/user.routes.js'
 import galleryRouter from './Routes/gallery.routes.js'
+import cartRouter from './Routes/cart.routes.js'
 
 app.use("/api/v1/users", userRouter)
 app.use("/api/v1/gallery", galleryRouter)
+app.use("/api/v1/cart", cartRouter)
 
 export default app;

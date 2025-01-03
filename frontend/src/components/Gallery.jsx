@@ -3,11 +3,13 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 function Gallery() {
     // const [products, setProducts] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     useEffect(()=>{
       const fetchGallery = async()=>{
         try {
           const response = await axios.get("http://localhost:5000/api/v1/gallery/", {withCredentials:true})
+          setLoading(false)
           console.log(response.data.data);
           
         } catch (error) {
@@ -18,7 +20,7 @@ function Gallery() {
       fetchGallery();
     },[])
 
-  const [loading, setLoading] = useState(false);
+  
   const products = [
     {
       id: 1,
@@ -129,7 +131,52 @@ function Gallery() {
 //   }, []);
   return (
     <>
-        <section className="px-3 pt-[120px] max-h-full pb-12">
+      {
+        loading ? (<section className="px-3 pt-[120px] max-h-full pb-12 animate-pulse">
+          <h2 className="relative text-3xl font-bold font-poppins text-center mb-12">
+            <span className="relative z-10 text-2xl md:text-3xl px-4 bg-gray-200"></span>
+            <span className="absolute inset-0 flex items-center">
+              <span className="flex-1 w-10 h-[3px] bg-gray-200"></span>
+              <span className="flex-1 w-10 h-[3px] bg-gray-200"></span>
+            </span>
+          </h2>
+        
+          <div className="flex flex-wrap sm:flex lg:flex-wrap gap-x-6 justify-evenly sm:gap-x-6 md:gap-x-10 gap-y-4">
+            <div className="bg-gray-200 shadow-lg rounded-lg overflow-hidden transition-transform transform hover:scale-105 w-40 sm:w-52 p-1">
+              <div className="w-full h-48 bg-gray-200 rounded-3xl"></div>
+              <div className="p-4">
+                <div className="h-4 bg-gray-200"></div>
+                <div className="mt-2 h-4 bg-gray-200"></div>
+                <div className="mt-2 h-4 bg-gray-200"></div>
+              </div>
+            </div>
+            <div className="bg-gray-200 shadow-lg rounded-lg overflow-hidden transition-transform transform hover:scale-105 w-40 sm:w-52 p-1">
+              <div className="w-full h-48 bg-gray-200 rounded-3xl"></div>
+              <div className="p-4">
+                <div className="h-4 bg-gray-200"></div>
+                <div className="mt-2 h-4 bg-gray-200"></div>
+                <div className="mt-2 h-4 bg-gray-200"></div>
+              </div>
+            </div>
+            <div className="bg-gray-200 shadow-lg rounded-lg overflow-hidden transition-transform transform hover:scale-105 w-40 sm:w-52 p-1">
+              <div className="w-full h-48 bg-gray-200 rounded-3xl"></div>
+              <div className="p-4">
+                <div className="h-4 bg-gray-200"></div>
+                <div className="mt-2 h-4 bg-gray-200"></div>
+                <div className="mt-2 h-4 bg-gray-200"></div>
+              </div>
+            </div>
+            <div className="bg-gray-200 shadow-lg rounded-lg overflow-hidden transition-transform transform hover:scale-105 w-40 sm:w-52 p-1">
+              <div className="w-full h-48 bg-gray-200 rounded-3xl"></div>
+              <div className="p-4">
+                <div className="h-4 bg-gray-200"></div>
+                <div className="mt-2 h-4 bg-gray-200"></div>
+                <div className="mt-2 h-4 bg-gray-200"></div>
+              </div>
+            </div>
+            
+          </div>
+        </section>) : (<section className="px-3 pt-[120px] max-h-full pb-12">
         <h2
           className={` relative text-3xl font-bold font-poppins text-center mb-12 before:content-['Discover_Mithila_Artistry'] before:absolute before:text-maroon before:text-[13px] md:before:text-[15px] before:top-[-20px] before:left-1/2 before:-translate-x-1/2 before:translate-y-[50px]`}
         >
@@ -174,7 +221,9 @@ function Gallery() {
             ))}
           </div>
         )}
-        </section>
+        </section>)
+      }
+        
     </>
   )
 }

@@ -60,26 +60,53 @@ export const addProducts = asyncHandler(async(req,res)=>{
     }
 })
 
-export const getProductsByCategory = asyncHandler(async(req,res)=>{
-    const {category} = req.params;
-    console.log(category);
-    
+export const getProductsByCategory = asyncHandler(async (req, res) => {
+  const { category } = req.params;
+  const { page = 1, limit = 10 } = req.query; // Default to page 1, limit 10
 
-    if(!["Saree", "Chunri", "Canvas", "Bed Sheet"].includes(category)){
-        throw new ApiError(400, "Invalid category name");
-    }
+  if (!["Saree", "Chunri", "Canvas", "Bed Sheet"].includes(category)) {
+    throw new ApiError(400, "Invalid category name");
+  }
 
-    const galleryItems = await Gallery.find({category});
+  const skip = (page - 1) * limit;
 
-    if(!galleryItems){
-        throw new ApiError(404,"No items found");
-    }
+  const galleryItems = await Gallery.find({ category })
+    .skip(skip)
+    .limit(parseInt(limit)); // Pagination logic
 
-    res.status(200).json(new ApiResponse(200, galleryItems, "Category Items fetched successfully"))
+  const totalItems = await Gallery.countDocuments({ category });
 
-})
+  if (!galleryItems.length) {
+    throw new ApiError(404, "No items found");
+  }
 
-export const getAllItems = asyncHandler(async(req,res)=>{
-    const items = await Gallery.find({});
-    res.status(200).json(new ApiResponse(200, items, "Items fetched successfully"))
-})
+  res.status(200).json(
+    new ApiResponse(200, {
+      items: galleryItems,
+      totalItems,
+      totalPages: Math.ceil(totalItems / limit),
+      currentPage: parseInt(page),
+    }, "Category Items fetched successfully")
+  );
+});
+
+export const getAllItems = asyncHandler(async (req, res) => {
+  const { page = 1, limit = 10 } = req.query; // Default to page 1, limit 10
+
+  const skip = (page - 1) * limit;
+
+  const items = await Gallery.find({})
+    .skip(skip)
+    .limit(parseInt(limit)); // Pagination logic
+
+  const totalItems = await Gallery.countDocuments();
+
+  res.status(200).json(
+    new ApiResponse(200, {
+      items,
+      totalItems,
+      totalPages: Math.ceil(totalItems / limit),
+      currentPage: parseInt(page),
+    }, "Items fetched successfully")
+  );
+});

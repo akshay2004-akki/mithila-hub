@@ -7,7 +7,8 @@ import asyncHandler from "../utils/asyncHandler.js";
 export const addToCart = asyncHandler(async(req,res)=>{
     const {productId} = req.body
     const userId = req.user?._id;
-
+    console.log(userId, productId);
+    
     if(!isValidObjectId(userId) || !isValidObjectId(productId)){
         throw new ApiError(400, "Invalid User or Product Id");
     }
@@ -21,6 +22,7 @@ export const addToCart = asyncHandler(async(req,res)=>{
 
         existingUserCart.products.push(productId);
         await existingUserCart.save({validateBeforeSave:false});
+        return res.status(200).json(new ApiResponse(200, existingUserCart, "Product Added Successfully"))
     }
 
     const newUserCart = await Cart.create({
@@ -29,5 +31,10 @@ export const addToCart = asyncHandler(async(req,res)=>{
     })
 
     return res.status(201).json(new ApiResponse(201, newUserCart, "Product Added Succesfully"))
+    
+})
+
+export const removeFromCart = asyncHandler(async(req,res)=>{
+    const {productId} = req.body;
     
 })
